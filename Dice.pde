@@ -5,7 +5,7 @@
   }
   void draw()
   {    
-    background(0);
+    background(197);
         for(int i = 0; i <= 700; i += 105){
            for(int j = 0; j <= 700; j += 105){
         Die one = new Die(35 + j, 30 + i);
