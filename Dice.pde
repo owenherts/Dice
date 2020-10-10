@@ -1,45 +1,68 @@
-  Target one;
-Target two;
-void setup()
-{
-  noLoop();
-  textAlign(CENTER);
-}
-void draw()
-{
-  background(197);
-  one = new Target(25, 50);
-  two = new Target(75, 50);
-  one.show();
-  two.show();
-  int sum = one.numRings + two.numRings; 
-  fill(0);
-  text("Total: " +sum,50,20);
-}
-void mousePressed()
-{
-  redraw();
-}
-class Target
-{
-  int numRings, myX, myY;
-  Target(int x, int y) //constructor initializes the 3 variables
+  void setup()
   {
-    myX = x;
-    myY = y;
-    numRings = (int)(Math.random()*3+1);
+      size(800, 800);
+      noLoop();
   }
-
- void show()
+  void draw()
+  {    
+    background(197);
+        for(int i = 0; i <= 700; i += 105){
+           for(int j = 0; j <= 700; j += 105){
+        Die one = new Die(35 + j, 30 + i);
+        one.show();
+        }}
+        
+  }
+  void mousePressed()
   {
-    int siz = 50;
-    for(int i = 0; i < numRings; i++)
-    {
+      redraw();
+  }
+  class Die //models one single dice cube
+  {
+      int myX, myY, dots;
+      
+      Die(int x, int y) //constructor
+      {
+          myX = x;
+          myY = y;
+          dots = (int)((Math.random()*6)+1);
+      }
+      void roll()
+      {
+          
+      }
+      void show()
+      {
+      square(myX, myY, 100);
+      int sum = (int)((Math.random()*200)+60);
       fill((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
-      ellipse(myX,myY,siz,siz);
-      siz-=16;
-    }
-    fill(0);
-    text(numRings,myX,90);
-  }
+      if(dots == 1){
+          ellipse(myX + 50, myY + 50, 15, 15);
+      }else if(dots == 2){
+          ellipse(myX + 15, myY + 15, 15, 15);
+          ellipse(myX + 85, myY + 85, 15, 15);
+      }else if(dots == 3){
+          ellipse(myX + 15, myY + 15, 15, 15);
+          ellipse(myX + 50, myY + 50, 15, 15);
+          ellipse(myX + 85, myY + 85, 15, 15);
+      }else if(dots == 4){
+          ellipse(myX + 15, myY + 15, 15, 15);
+          ellipse(myX + 15, myY + 85, 15, 15);
+          ellipse(myX + 85, myY + 15, 15, 15);
+          ellipse(myX + 85, myY + 85, 15, 15);
+      }else if(dots == 5){
+          ellipse(myX + 15, myY + 15, 15, 15);
+          ellipse(myX + 15, myY + 85, 15, 15);
+          ellipse(myX + 85, myY + 15, 15, 15);
+          ellipse(myX + 85, myY + 85, 15, 15);
+          ellipse(myX + 50, myY + 50, 15, 15);
+      }else{
+          ellipse(myX + 15, myY + 15, 15, 15);
+          ellipse(myX + 15, myY + 50, 15, 15);
+          ellipse(myX + 15, myY + 85, 15, 15);
+          ellipse(myX + 85, myY + 15, 15, 15);
+          ellipse(myX + 85, myY + 50, 15, 15);
+          ellipse(myX + 85, myY + 85, 15, 15);
+      }text("Total: " + sum, 15, 15);
+   }
 }
