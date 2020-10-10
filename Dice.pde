@@ -36,7 +36,7 @@
       }
       void show()
       {
-      square(myX, myY, 100);
+      rect(myX, myY, 100, 100);
       fill((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
       if(dots == 1){
           ellipse(myX + 50, myY + 50, 15, 15);
