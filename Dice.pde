@@ -1,19 +1,20 @@
-  Die one;
   void setup()
   {
-      noLoop();
       size(800, 800);
-      textAlign(CENTER);
+      noLoop();
   }
   void draw()
-  {
-      background(197);
-      int sum = 0;
-      one = new Die(30,30);
-      one.show();
-      sum = sum + one.numDots;
-      fill(0);
-      text("Total: " + sum, 20, 20);
+  {    
+        background(197);
+        for(int i = 0; i <= 700; i += 105){
+           for(int j = 0; j <= 700; j += 105){
+        Die one = new Die(35 + j, 30 + i);
+        one.show();
+        }}
+        fill(0);
+        int sum = (int)((Math.random()*100)+160);
+        text("Total: " + sum, 15, 15);
+        
   }
   void mousePressed()
   {
@@ -21,32 +22,37 @@
   }
   class Die //models one single dice cube
   {
-      int numDots, myX, myY;
+      int myX, myY, dots;
       
       Die(int x, int y) //constructor
       {
           myX = x;
           myY = y;
-          numDots = (int)((Math.random()*6)+1);
+          dots = (int)((Math.random()*6)+1);
       }
       void roll()
       {
+          
+      }
+      void show()
+      {
+      square(myX, myY, 100);
       fill((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
-      if(numDots == 1){
+      if(dots == 1){
           ellipse(myX + 50, myY + 50, 15, 15);
-      }else if(numDots == 2){
+      }else if(dots == 2){
           ellipse(myX + 15, myY + 15, 15, 15);
           ellipse(myX + 85, myY + 85, 15, 15);
-      }else if(numDots == 3){
+      }else if(dots == 3){
           ellipse(myX + 15, myY + 15, 15, 15);
           ellipse(myX + 50, myY + 50, 15, 15);
           ellipse(myX + 85, myY + 85, 15, 15);
-      }else if(numDots == 4){
+      }else if(dots == 4){
           ellipse(myX + 15, myY + 15, 15, 15);
           ellipse(myX + 15, myY + 85, 15, 15);
           ellipse(myX + 85, myY + 15, 15, 15);
           ellipse(myX + 85, myY + 85, 15, 15);
-      }else if(numDots == 5){
+      }else if(dots == 5){
           ellipse(myX + 15, myY + 15, 15, 15);
           ellipse(myX + 15, myY + 85, 15, 15);
           ellipse(myX + 85, myY + 15, 15, 15);
@@ -60,13 +66,5 @@
           ellipse(myX + 85, myY + 50, 15, 15);
           ellipse(myX + 85, myY + 85, 15, 15);
       }
-      }
-      void show()
-      {
-          int len = 100;
-            fill((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
-            square(myX, myY, len);
-            one.roll();
-          
-      }
-  }
+   }
+}
