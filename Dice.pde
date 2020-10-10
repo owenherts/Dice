@@ -10,8 +10,8 @@
            for(int j = 0; j <= 700; j += 105){
         Die one = new Die(35 + j, 30 + i);
         one.show();
-        }}
-        fill(0);
+        }
+        }
         int sum = (int)((Math.random()*100)+160);
         text("Total: " + sum, 15, 15);
         
